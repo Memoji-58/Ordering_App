@@ -1,0 +1,71 @@
+/* ==========================================
+   1. GLOBAL BOX-SIZING & RESETS
+   ========================================== */
+/* Sorgt dafür, dass Padding und Border in der Breitenberechnung 
+   enthalten sind (kein ungewolltes Umbrechen mehr). */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================
+   2. BODY & TYPOGRAFIE BASIS
+   ========================================== */
+body {
+  /* Gute Standard-Schriftarten für Windows, Mac & Mobilgeräte */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.5; /* Angenehmer Zeilenabstand für Lesbarkeit */
+  -webkit-font-smoothing: antialiased; /* Geschmeidigere Schrift auf Mac/iOS */
+  color: #333333; /* Dunkles Grau statt hartem Schwarz ist angenehmer für die Augen */
+  background-color: #ffffff;
+  min-height: 100vh; /* Der Body geht immer mindestens über die volle Bildschirmhöhe */
+}
+
+/* ==========================================
+   3. MEDIEN (Bilder & Videos)
+   ========================================== */
+/* Verhindert, dass große Bilder aus ihren Containern herausragen */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================
+   4. FORMULARE & BUTTONS
+   ========================================== */
+/* Vererbt die globale Schriftart auch an Eingabefelder und Buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Button-Cursor auf Zeigefinger stellen */
+button {
+  cursor: pointer;
+}
+
+/* ==========================================
+   5. LINKS & LISTEN
+   ========================================== */
+/* Verhindert das unterstrichene Standard-Blau bei Links, falls gewünscht */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Entfernt Aufzählungspunkte von Listen (kannst du nach Bedarf anpassen) */
+ul,
+ol {
+  list-style: none;
+}
