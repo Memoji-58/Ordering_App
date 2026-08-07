@@ -3,34 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bestell_App</title>
+    <title>BurgerHouse</title>
     <script src="./script.js" defer></script>
-
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./style/standard.css">
 </head>
 <body>
-    <header class="header">
 
+    <header class="header">
+        <div class="header-logo">
+            <img class="logo-img" src="./assets/icons/Logo 02.svg" alt="BurgerHouse Logo">
+        </div>
+        <button class="burger-menu-btn" aria-label="Menü öffnen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
 
     <main class="content_total">
-        <div class="content_restaurant">
-            <div class="content_restaurant_head"></div>
+
+        <section class="content_restaurant_head">
+            <img class="banner-img" src="./assets/img/theme.png" alt="Banner Header">
+            <img class="profile-img" src="./assets/icons/burger_header.svg" alt="BurgerHouse Icon">
+            
             <div class="content_restaurant_titlebox">
-                <h1>Paradise Noodles</h1>
-                <div class="content_restaurant_rating">
-                    <p>Bewertung (4,2 von 5 Sternen)</p>
+                <div class="title-row">
+                    <h1><span class="title-orange">Burger</span>House</h1>
+                    
+                    <div class="rating-badge">
+                        <img class="rating-star-icon" src="./assets/icons/star.svg" alt="Stern">
+                        <span class="rating-score">4,1</span>
+                        <span class="rating-count">(150+)</span>
+                    </div>
+                </div>
+
+                <p class="restaurant-description">The best of Burgers, Pizza, and Greens, all in one great place.</p>
+            </div>
+        </section>
+
+        <section class="menu-container">
+            <div class="category-section">
+                <div class="category-header">
+                    <img class="category-icon" src="./assets/icons/burger_icon.svg" alt="Category Icon">
+                    <h2>Burger & Sandwiches</h2>
+                </div>
+
+                <div class="dishes-list">
+                    <article class="dish-card">
+                        <img class="dish-img" src="./assets/img/burger_one.png" alt="Veggie mushroom black burger">
+                        
+                        <div class="dish-content">
+                            <div class="dish-header">
+                                <h3 class="dish-title">Veggie mushroom black burger</h3>
+                                <span class="dish-price">16,90 €</span>
+                            </div>
+                            
+                            <p class="dish-description">White bun, fresh lettuce, Tomatoes, Mushrooms, Mustard sauce</p>
+                            
+                            <div class="dish-actions">
+                                <button class="add-to-basket-btn">Add to basket</button>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
-            <div class="content_restaurant_navbar"></div>
-            <div class="content_restaurant_category"></div>
-        </div>
+        </section>
 
-        <div class="Basket_stickyrail"></div>
-        <div id="basket_responsive" class="basket_responsive basket_responsive_closed"></div>
     </main>
 
-    <footer class="footer"></footer>
+    <footer class="footer">
+        <p>&copy; 2026 BurgerHouse. Imprint | Privacy Policy</p>
+    </footer>
+
 </body>
 </html>

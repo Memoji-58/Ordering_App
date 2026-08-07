@@ -1,0 +1,304 @@
+/* ==========================================
+   1. FONTS & RESET
+   ========================================== */
+@font-face {
+    font-display: swap;
+    font-family: 'Palanquin';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/palanquin-v17-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Palanquin';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/palanquin-v17-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Palanquin Dark';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/palanquin-dark-v17-latin-regular.woff2') format('woff2');
+}
+
+
+
+:root {
+    --primary-orange: #E76C1F;
+    --card-bg: #ffe0b2;
+    --page-bg: #fff8f0;
+    --text-color: #2c2c2c;
+    --font-main: 'Palanquin', system-ui, -apple-system, sans-serif;
+    --font-heading: 'Palanquin Dark', sans-serif;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--page-bg);
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+img {
+    object-fit: cover;
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1;
+    color: #000000;
+}
+
+h2 {
+    font-family: var(--font-main);
+    font-size: 40px;
+}
+
+
+   /* 2. HEADER */
+
+.header {
+    height: 128px;
+    background-color: var(--primary-orange);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 49px 0;
+}
+
+.header img {
+    padding-left: 80px;
+}
+
+.logo-img {
+    width: 100%;
+    height: 100%;
+}
+
+.burger-menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-right: 50px;
+}
+
+.burger-menu-btn span {
+    width: 24px;
+    height: 3px;
+    background-color: #ffffff;
+    border-radius: 2px;
+}
+
+
+   /* 3. MAIN CONTENT & RESTAURANT HEADER */
+
+.content_total {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+}
+
+.content_restaurant_head {
+    position: relative;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.banner-img {
+    width: 100%;
+    height: 580px;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: absolute;
+    top: 453px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.content_restaurant_titlebox {
+    margin-top: 100px;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.title-row h1 .title-orange {
+    color: var(--primary-orange);
+}
+
+
+.rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background-color: var(--card-bg);
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.rating-star-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.rating-score {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000000;
+    line-height: 1;
+}
+
+.rating-count {
+    font-size: 18px;
+    font-weight: 400;
+    color: #666666;
+    line-height: 1;
+}
+
+.restaurant-description {
+    font-weight: 700;
+    font-size: 24px;
+    color: #363534;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+
+   /* 4. MENU & DISH CARDS */
+
+.category-section {
+    margin-bottom: 2rem;
+}
+
+.category-header {
+    background-color: var(--primary-orange);
+    color: #ffffff;
+    padding-left: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 60px;
+    width: 100%;
+}
+
+.category-icon {
+    width: 88px;
+    height: 91px;
+    position: relative;
+    bottom: 10px;
+    right: 33px;
+}
+
+.dishes-list {
+    background-color: #ffffff;
+    padding: 1.5rem 119px 1.5rem 55px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.dish-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 10px 15px 10px 10px;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    max-width: 713px;
+    height: 141px;
+}
+
+.dish-img {
+    width: 207px;
+    height: 121px;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.dish-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.dish-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.dish-title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.dish-price {
+    font-size: 24px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.dish-description {
+    font-size: 16px;
+    color: #555555;
+    max-width: 80%;
+}
+
+.dish-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+}
+
+.add-to-basket-btn {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.add-to-basket-btn:hover {
+    background-color: #f5f5f5;
+}
+
+
+   /* 5. FOOTER */
+
+.footer {
+    background-color: var(--primary-orange);
+    color: #ffffff;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.85rem;
+    margin-top: 4rem;
+}
