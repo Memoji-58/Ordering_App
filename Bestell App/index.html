@@ -4,21 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BurgerHouse</title>
-    <script src="./script.js" defer></script>
+    <script src="./db.js"></script>
+    <script src="./script.js"></script>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./style/standard.css">
+    <link rel="stylesheet" href="./style/basket.css">
+    <link rel="stylesheet" href="./style/fonts.css">
 </head>
-<body>
+<body onload="renderAll()">
 
-    <header class="header">
-        <div class="header-logo">
-            <img class="logo-img" src="./assets/icons/Logo 02.svg" alt="BurgerHouse Logo">
+    <header class="header" id="home">
+        <div class="header-inner">
+            <div class="header-logo">
+                <a href="#home">
+                    <img class="logo-img" src="./assets/icons/Logo 02.svg" alt="BurgerHouse Logo">
+                </a>
+            </div>
+
+            <button class="burger-menu-btn" onclick="toggleNavMenu()" aria-label="Menü öffnen/schließen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-menu d-none" id="nav-menu">
+                <ul>
+                    <li><a href="#home" onclick="toggleNavMenu()">Home</a></li>
+                    <li><a href="#menu" onclick="toggleNavMenu()">Menu</a></li>
+                    <li><a href="#contact" onclick="toggleNavMenu()">Contact</a></li>
+                    <li><a href="#" onclick="toggleNavMenu(); toggleBasket();">Basket</a></li>
+                </ul>
+            </nav>
         </div>
-        <button class="burger-menu-btn" aria-label="Menü öffnen">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
     </header>
 
     <main class="content_total">
@@ -34,7 +51,7 @@
                     <div class="rating-badge">
                         <img class="rating-star-icon" src="./assets/icons/star.svg" alt="Stern">
                         <span class="rating-score">4,1</span>
-                        <span class="rating-count">(150+)</span>
+                        <span class="rating-count">(317)</span>
                     </div>
                 </div>
 
@@ -42,38 +59,118 @@
             </div>
         </section>
 
-        <section class="menu-container">
-            <div class="category-section">
-                <div class="category-header">
-                    <img class="category-icon" src="./assets/icons/burger_icon.svg" alt="Category Icon">
-                    <h2>Burger & Sandwiches</h2>
+        <div class="main-layout" id="menu">
+
+            <section class="menu-container">
+
+                <div class="category-section">
+                    <div class="category-header-full">
+                        <div class="category-header-inner">
+                            <img class="category-icon" src="./assets/icons/burger_icon.svg" alt="Burger Icon">
+                            <h2>Burger</h2>
+                        </div>
+                    </div>
+                    <div class="dishes-list" id="burger-container"></div>
                 </div>
 
-                <div class="dishes-list">
-                    <article class="dish-card">
-                        <img class="dish-img" src="./assets/img/burger_one.png" alt="Veggie mushroom black burger">
-                        
-                        <div class="dish-content">
-                            <div class="dish-header">
-                                <h3 class="dish-title">Veggie mushroom black burger</h3>
-                                <span class="dish-price">16,90 €</span>
-                            </div>
-                            
-                            <p class="dish-description">White bun, fresh lettuce, Tomatoes, Mushrooms, Mustard sauce</p>
-                            
-                            <div class="dish-actions">
-                                <button class="add-to-basket-btn">Add to basket</button>
-                            </div>
+                <div class="category-section">
+                    <div class="category-header-full">
+                        <div class="category-header-inner">
+                            <img class="category-icon" src="./assets/icons/pizza_icon.svg" alt="Pizza Icon">
+                            <h2>Pizza</h2>
                         </div>
-                    </article>
+                    </div>
+                    <div class="dishes-list" id="pizza-container"></div>
                 </div>
-            </div>
-        </section>
+
+                <div class="category-section">
+                    <div class="category-header-full">
+                        <div class="category-header-inner">
+                            <img class="category-icon" src="./assets/icons/salad_icon.svg" alt="Salat Icon">
+                            <h2>Salate</h2>
+                        </div>
+                    </div>
+                    <div class="dishes-list" id="salad-container"></div>
+                </div>
+
+            </section>
+
+        </div>
 
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2026 BurgerHouse. Imprint | Privacy Policy</p>
+    <aside id="basket" class="basket-dialog d-none">
+        <div class="basket-card">
+            <div class="basket-header">
+                <h3>Basket</h3>
+                <button class="close-basket-btn" onclick="toggleBasket()">×</button>
+            </div>
+
+            <div class="basket-items" id="basket-items"></div>
+
+            <div class="basket-summary">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">0.00 €</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Delivery fee</span>
+                    <span>4,99 €</span>
+                </div>
+
+                <hr>
+
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="total-price">0.00 €</span>
+                </div>
+            </div>
+
+            <button class="checkout-btn" onclick="checkout()">
+                Buy now (<span id="btn-total">0.00 €</span>)
+            </button>
+        </div>
+    </aside>
+
+    <div id="order-confirmation" class="order-confirmation d-none">
+        <div class="confirmation-card">
+            <button class="confirmation-close" onclick="closeConfirmation()">×</button>
+
+            <div class="confirmation-icon">
+                <img src="./assets/icons/Delivery.svg" alt="Delivery">
+            </div>
+
+            <h2>Order confirmed!</h2>
+            <p>Your food is on the way!</p>
+        </div>
+    </div>
+
+    <nav class="mobile-bottom-nav">
+        <a href="#home" class="nav-item">
+            <img class="icon-default" src="./assets/icons/home_white.svg" alt="Home">
+            <img class="icon-hover" src="./assets/icons/home.svg" alt="Home Active">
+        </a>
+        <a href="#profile" class="nav-item">
+            <img class="icon-default" src="./assets/icons/person_white.svg" alt="Profile">
+            <img class="icon-hover" src="./assets/icons/person_orange.svg" alt="Profile Active">
+        </a>
+        <a href="#menu" class="nav-item">
+            <img class="icon-default" src="./assets/icons/takeout_dining_white.svg" alt="Menu">
+            <img class="icon-hover" src="./assets/icons/takeout_dining_orange.svg" alt="Menu Active">
+        </a>
+        <a href="javascript:void(0)" onclick="toggleBasket()" class="nav-item">
+            <img class="icon-default" src="./assets/icons/shopping_cart_white.svg" alt="Basket">
+            <img class="icon-hover" src="./assets/icons/shopping_cart_orange.svg" alt="Basket Active">
+        </a>
+    </nav>
+
+    <footer>
+        <div class="footer-content">
+            <span class="footer-copyright">&copy; 2025 BurgerHouse</span>
+            <a href="#" class="footer-imprint">Imprint</a>
+            <a href="#" class="footer-cookies">Cookie Preferences</a>
+        </div>
     </footer>
 
 </body>
