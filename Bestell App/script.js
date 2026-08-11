@@ -131,6 +131,20 @@ function removeFromBasket(i) {
     renderBasket();
 }
 
+function increaseAmount(i) {
+    basket[i].amount++;
+    renderBasket();
+}
+
+
+function decreaseAmount(i) {
+    if (basket[i].amount > 1) {
+        basket[i].amount--;
+    } else {
+        basket.splice(i, 1); 
+    }
+    renderBasket();
+}
 
 function openBasket() {
     let basketElement = document.getElementById('basket');
@@ -165,6 +179,12 @@ function renderBasket() {
 
                 <div class="basket-item-controls">
 
+                 <div class="amount-picker">
+                        <button class="amount-btn" onclick="decreaseAmount(${i})">-</button>
+                        <span>${item.amount}x</span>
+                        <button class="amount-btn" onclick="increaseAmount(${i})">+</button>
+                    </div>
+
                     <span>
                         ${item.amount} × ${item.price.toFixed(2)} €
                     </span>
@@ -178,7 +198,7 @@ function renderBasket() {
                 <button
                     class="remove-from-basket-btn"
                     onclick="removeFromBasket(${i})">
-                    Remove
+                    <img class="icon-default" src="./assets/icons/delete.svg">
                 </button>
 
             </div>
@@ -186,7 +206,7 @@ function renderBasket() {
     }
 
     let deliveryFee = 4.99;
-    let total = subtotal + deliveryFee;
+    let total = subtotal > 0 ? subtotal + deliveryFee : 0 ;
 
     subtotalElement.innerText = `${subtotal.toFixed(2)} €`;
     totalPriceElement.innerText = `${total.toFixed(2)} €`;

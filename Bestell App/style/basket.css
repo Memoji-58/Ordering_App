@@ -93,6 +93,52 @@
     color: #ffffff;
 }
 
+.amount-picker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f1f3f5;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+
+.amount-btn {
+    width: 26px;
+    height: 26px;
+    border: none;
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.15s ease-in-out;
+}
+
+
+.amount-btn:hover {
+    background-color: var(--primary-orange);
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.amount-btn:active {
+    transform: scale(0.95);
+}
+
+
+.amount-picker span {
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+}
+
 .checkout-btn {
     width: 100%;
     background-color: var(--primary-orange, #E76C1F);
