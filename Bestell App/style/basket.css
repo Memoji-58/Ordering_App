@@ -1,9 +1,10 @@
 .basket-dialog {
     position: fixed;
-    top: 500px;
+    top: 50%;
     right: max(0px, calc((100vw - 1440px) / 2));
     width: 360px;
     max-height: calc(100vh - 160px);
+     transform: translateY(-50%);
     z-index: 1000;
 }
 
