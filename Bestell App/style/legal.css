@@ -1,0 +1,209 @@
+/* =========================
+   LEGAL / COOKIE PAGES
+========================= */
+
+.legal-page,
+.cookie-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 20px 80px;
+}
+
+.legal-card,
+.cookie-card {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+
+/* HEADINGS */
+
+.legal-card h1,
+.cookie-card h1 {
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+.legal-card h2,
+.cookie-card h2 {
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+
+/* TEXT */
+
+.legal-card p,
+.cookie-card p,
+.legal-card li,
+.cookie-card li {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444444;
+}
+
+.legal-card ul {
+    padding-left: 25px;
+}
+
+
+/* LINKS */
+
+.legal-card a,
+.cookie-card a {
+    color: var(--primary-orange);
+}
+
+
+/* TRENNLINIE */
+
+.legal-card hr {
+    border: 0;
+    border-top: 1px solid #dddddd;
+    margin: 50px 0;
+}
+
+
+/* =========================
+   COOKIE OPTIONS
+========================= */
+
+.cookie-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #dddddd;
+}
+
+.cookie-option h2 {
+    margin: 0 0 5px;
+    font-size: 20px;
+}
+
+.cookie-option p {
+    margin: 0;
+    font-size: 14px;
+}
+
+
+/* =========================
+   SWITCH
+========================= */
+
+.switch {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background-color: #cccccc;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    top: 3px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.switch input:checked + .slider {
+    background-color: var(--primary-orange);
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(24px);
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.back-button,
+.save-cookies {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--primary-orange);
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.back-button:hover,
+.save-cookies:hover {
+    opacity: 0.85;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .legal-page,
+    .cookie-page {
+        padding: 30px 12px 90px;
+    }
+
+    .legal-card,
+    .cookie-card {
+        padding: 20px 16px;
+    }
+
+    .legal-card h1,
+    .cookie-card h1 {
+        font-size: 32px;
+    }
+
+    .legal-card h2,
+    .cookie-card h2 {
+        font-size: 20px;
+    }
+
+    .legal-card p,
+    .cookie-card p,
+    .legal-card li,
+    .cookie-card li {
+        font-size: 14px;
+    }
+
+    .cookie-option {
+        align-items: flex-start;
+    }
+
+    .cookie-option h2 {
+        font-size: 18px;
+    }
+
+    .cookie-option p {
+        font-size: 13px;
+    }
+
+}

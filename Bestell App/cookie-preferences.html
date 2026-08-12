@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Cookie Preferences | BurgerHouse</title>
+
+    <script src="./db.js"></script>
+    <script src="./script.js"></script>
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style/standard.css">
+    <link rel="stylesheet" href="./style/basket.css">
+    <link rel="stylesheet" href="./style/fonts.css">
+    <link rel="stylesheet" href="./style/legal.css">
+
+    <link rel="icon"
+        type="image/svg+xml"
+        href="./assets/icons/Delivery.svg">
+
+</head>
+
+<body>
+
+    <header class="header" id="home">
+
+        <div class="header-inner">
+
+            <div class="header-logo">
+
+                <a href="index.html">
+
+                    <img
+                        class="logo-img"
+                        src="./assets/icons/Logo 02.svg"
+                        alt="BurgerHouse Logo">
+
+                </a>
+
+            </div>
+
+
+            <button
+                class="burger-menu-btn"
+                onclick="toggleNavMenu()"
+                aria-label="Open/close menu">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <nav
+                class="nav-menu d-none"
+                id="nav-menu">
+
+                <ul>
+
+                    <li>
+                        <a href="index.html#home"
+                            onclick="toggleNavMenu()">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#menu"
+                            onclick="toggleNavMenu()">
+                            Menu
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#contact"
+                            onclick="toggleNavMenu()">
+                            Contact
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#"
+                            onclick="toggleNavMenu(); toggleBasket();">
+                            Basket
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTENT -->
+
+    <main class="legal-page">
+
+        <section class="legal-card">
+
+            <h1>
+                <span class="title-orange">Cookie</span>
+                Preferences
+            </h1>
+
+
+            <p>
+                We use cookies and similar technologies to provide
+                essential website functionality and improve your
+                experience.
+            </p>
+
+
+            <!-- NECESSARY -->
+
+            <div class="cookie-option">
+
+                <div>
+
+                    <h2>
+                        Necessary Cookies
+                    </h2>
+
+                    <p>
+                        These cookies are required for the basic
+                        functionality of the website and cannot
+                        be disabled.
+                    </p>
+
+                </div>
+
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        checked
+                        disabled>
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <!-- ANALYTICS -->
+
+            <div class="cookie-option">
+
+                <div>
+
+                    <h2>
+                        Analytics Cookies
+                    </h2>
+
+                    <p>
+                        These cookies help us understand how
+                        visitors use our website and help us
+                        improve its functionality.
+                    </p>
+
+                </div>
+
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="analytics-cookies">
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <!-- MARKETING -->
+
+            <div class="cookie-option">
+
+                <div>
+
+                    <h2>
+                        Marketing Cookies
+                    </h2>
+
+                    <p>
+                        These cookies may be used to provide
+                        relevant content and marketing information.
+                    </p>
+
+                </div>
+
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="marketing-cookies">
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <br>
+
+            <a class="back-button" href="index.html">
+                Back to Home
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <nav class="mobile-bottom-nav">
+
+        <a href="index.html#home" class="nav-item">
+
+            <img
+                class="icon-default"
+                src="./assets/icons/home_white.svg"
+                alt="Home">
+
+            <img
+                class="icon-hover"
+                src="./assets/icons/home.svg"
+                alt="Home Active">
+
+        </a>
+
+
+        <a href="index.html#profile" class="nav-item">
+
+            <img
+                class="icon-default"
+                src="./assets/icons/person_white.svg"
+                alt="Profile">
+
+            <img
+                class="icon-hover"
+                src="./assets/icons/person_orange.svg"
+                alt="Profile Active">
+
+        </a>
+
+
+        <a href="index.html#menu" class="nav-item">
+
+            <img
+                class="icon-default"
+                src="./assets/icons/takeout_dining_white.svg"
+                alt="Menu">
+
+            <img
+                class="icon-hover"
+                src="./assets/icons/takeout_dining_orange.svg"
+                alt="Menu Active">
+
+        </a>
+
+
+        <a
+            href="javascript:void(0)"
+            onclick="toggleBasket()"
+            class="nav-item">
+
+            <img
+                class="icon-default"
+                src="./assets/icons/shopping_cart_white.svg"
+                alt="Basket">
+
+            <img
+                class="icon-hover"
+                src="./assets/icons/shopping_cart_orange.svg"
+                alt="Basket Active">
+
+        </a>
+
+    </nav>
+
+    <footer>
+
+        <div class="footer-content">
+
+            <span class="footer-copyright">
+                &copy; 2025 BurgerHouse
+            </span>
+
+            <a
+                href="legal.html"
+                class="footer-imprint">
+                Imprint
+            </a>
+
+
+            <a
+                href="cookie-preferences.html"
+                class="footer-cookies">
+                Cookie Preferences
+            </a>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
