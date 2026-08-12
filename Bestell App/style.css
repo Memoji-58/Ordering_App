@@ -358,9 +358,18 @@ h3 {
     transition: background-color 0.2s ease;
 }
 
-.add-to-basket-btn:hover {
+.add-to-basket-btn:hover{
     background-color: #f5f5f5;
+    color: var(--primary-orange);
 }
+
+.add-to-basket-btn:active{
+    background-color: var(--primary-orange);
+    color: #f5f5f5;
+}
+
+
+
 
 /* ==========================================
    6. FOOTER

@@ -11,6 +11,14 @@ function renderAll() {
 
     for (let i = 0; i < dishes.length; i++) {
 
+        let amount = 0;
+
+        for (let j = 0; j < basket.length; j++) {
+            if (basket[j].name === dishes[i].name) {
+                amount = basket[j].amount;
+            }
+        }
+
         if (dishes[i].category === "Burger") {
             htmlBurger += `
                 <article class="dish-card">
@@ -25,8 +33,8 @@ function renderAll() {
                         <p class="dish-description">${dishes[i].ingredients}</p>
 
                         <div class="dish-actions">
-                            <button class="add-to-basket-btn" onclick="addToBasket(${i})">
-                                Add to basket
+                            <button class="add-to-basket-btn" onclick="addToBasket(${i})">${amount > 0 ? `Added (${amount})`:
+                                'Add to basket'}
                             </button>
                         </div>
                     </div>
@@ -48,8 +56,8 @@ function renderAll() {
                         <p class="dish-description">${dishes[i].ingredients}</p>
 
                         <div class="dish-actions">
-                            <button class="add-to-basket-btn" onclick="addToBasket(${i})">
-                                Add to basket
+                            <button class="add-to-basket-btn" onclick="addToBasket(${i})">${amount > 0 ? `Added (${amount})`:
+                                'Add to basket'}
                             </button>
                         </div>
                     </div>
@@ -71,8 +79,8 @@ function renderAll() {
                         <p class="dish-description">${dishes[i].ingredients}</p>
 
                         <div class="dish-actions">
-                            <button class="add-to-basket-btn" onclick="addToBasket(${i})">
-                                Add to basket
+                            <button class="add-to-basket-btn" onclick="addToBasket(${i})">  ${amount > 0 ? `Added (${amount})`:
+                                'Add to basket'}
                             </button>
                         </div>
                     </div>
@@ -107,7 +115,7 @@ let basket = [];
 function addToBasket(i) {
     let selectedDish = dishes[i];
 
-    let basketIndex = basket.findIndex(function(dish) {
+    let basketIndex = basket.findIndex(function (dish) {
         return dish.name === selectedDish.name;
     });
 
@@ -122,6 +130,7 @@ function addToBasket(i) {
     }
 
     renderBasket();
+    renderAll();
     openBasket();
 }
 
@@ -129,11 +138,13 @@ function addToBasket(i) {
 function removeFromBasket(i) {
     basket.splice(i, 1);
     renderBasket();
+    renderAll();
 }
 
 function increaseAmount(i) {
     basket[i].amount++;
     renderBasket();
+    renderAll();
 }
 
 
@@ -141,9 +152,10 @@ function decreaseAmount(i) {
     if (basket[i].amount > 1) {
         basket[i].amount--;
     } else {
-        basket.splice(i, 1); 
+        basket.splice(i, 1);
     }
     renderBasket();
+    renderAll();
 }
 
 function openBasket() {
@@ -206,7 +218,7 @@ function renderBasket() {
     }
 
     let deliveryFee = 4.99;
-    let total = subtotal > 0 ? subtotal + deliveryFee : 0 ;
+    let total = subtotal > 0 ? subtotal + deliveryFee : 0;
 
     subtotalElement.innerText = `${subtotal.toFixed(2)} €`;
     totalPriceElement.innerText = `${total.toFixed(2)} €`;
