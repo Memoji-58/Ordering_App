@@ -184,7 +184,7 @@
     }
 
     .slider-buttons {
-        
+        bottom: 178px;
         gap: 4px;
     }
 
@@ -218,7 +218,7 @@
     }
 
     .slider-buttons {
-        
+        bottom: 160px;
         gap: 3px;
     }
 
