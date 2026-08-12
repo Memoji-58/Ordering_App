@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./style/standard.css">
     <link rel="stylesheet" href="./style/basket.css">
     <link rel="stylesheet" href="./style/fonts.css">
+    <link rel="stylesheet" href="./style/slider.css">
     <link rel="icon" type="image/svg+xml" href="./assets/icons/Delivery.svg">
 </head>
 <body onload="renderAll()">
@@ -31,7 +32,31 @@
             <nav class="nav-menu d-none" id="nav-menu">
                 <ul>
                     <li><a href="#home" onclick="toggleNavMenu()">Home</a></li>
-                    <li><a href="#menu" onclick="toggleNavMenu()">Menu</a></li>
+                    <li class="menu-dropdown">
+    <input type="checkbox" id="menu-toggle">
+
+    <label for="menu-toggle">Menu</label>
+
+    <ul class="submenu">
+        <li>
+            <a href="#burger-container" onclick="toggleNavMenu()">
+                Burger
+            </a>
+        </li>
+
+        <li>
+            <a href="#pizza-container" onclick="toggleNavMenu()">
+                Pizza
+            </a>
+        </li>
+
+        <li>
+            <a href="#salad-container" onclick="toggleNavMenu()">
+                Salate
+            </a>
+        </li>
+    </ul>
+</li>
                     <li><a href="#contact" onclick="toggleNavMenu()">Contact</a></li>
                     <li><a href="#" onclick="toggleNavMenu(); toggleBasket();">Basket</a></li>
                 </ul>
@@ -43,8 +68,42 @@
 
         <section class="content_restaurant_head">
             <img class="banner-img" src="./assets/img/theme.png" alt="Banner Header">
-            <img class="profile-img" src="./assets/icons/burger_header.svg" alt="BurgerHouse Icon">
-            
+
+  <div class="slider_a">
+
+    <input type="radio" name="slider" id="slide-one" checked>
+    <input type="radio" name="slider" id="slide-two">
+    <input type="radio" name="slider" id="slide-three">
+
+    <div class="slider_a_wrapper">
+
+        <figure class="slider_a_element element_one">
+            <a href="#burger-container">
+            <img src="./assets/icons/burger_header.png" alt="Burger">
+            </a>
+        </figure>
+<a href="#pizza-container">
+        <figure class="slider_a_element element_two">
+            <img src="./assets/icons/pizza_header.png" alt="Pizza">
+            </a>
+        </figure>
+<a href="#salad-container">
+        <figure class="slider_a_element element_three">
+            <img src="./assets/icons/salad_header.png" alt="Salat">
+        </a>
+        </figure>
+
+    </div>
+
+    <div class="slider-buttons">
+
+        <label for="slide-one">Burger</label>
+        <label for="slide-two">Pizza</label>
+        <label for="slide-three">Salat</label>
+
+    </div>
+
+</div>
             <div class="content_restaurant_titlebox">
                 <div class="title-row">
                     <h1><span class="title-orange">Burger</span>House</h1>
@@ -88,7 +147,7 @@
                     <div class="category-header-full">
                         <div class="category-header-inner">
                             <img class="category-icon" src="./assets/icons/salad_icon.svg" alt="Salat Icon">
-                            <h2>Salate</h2>
+                            <h2>Salad</h2>
                         </div>
                     </div>
                     <div class="dishes-list" id="salad-container"></div>

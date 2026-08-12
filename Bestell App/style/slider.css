@@ -1,0 +1,229 @@
+.slider_a {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+}
+
+.slider_a > input {
+    display: none;
+}
+
+.slider_a_wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.slider_a_element {
+    width: 200px;
+    height: 200px;
+
+    position: absolute;
+    bottom: 95px;
+    left: 50%;
+
+    margin: 0;
+
+    transform: translateX(-50%);
+
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.slider_a_element img {
+    width: 200px;
+    height: 200px;
+
+    object-fit: contain;
+    display: block;
+}
+
+
+/* ==========================================
+   BURGER
+========================================== */
+
+.element_one {
+    transform: translateX(-50%);
+    opacity: 1;
+}
+
+.element_two {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.element_three {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+
+/* ==========================================
+   PIZZA
+========================================== */
+
+#slide-two:checked ~ .slider_a_wrapper .element_one {
+    transform: translateX(-200%);
+    opacity: 0;
+}
+
+#slide-two:checked ~ .slider_a_wrapper .element_two {
+    transform: translateX(-50%);
+    opacity: 1;
+}
+
+
+/* ==========================================
+   SALAD
+========================================== */
+
+#slide-three:checked ~ .slider_a_wrapper .element_one {
+    transform: translateX(-200%);
+    opacity: 0;
+}
+
+#slide-three:checked ~ .slider_a_wrapper .element_two {
+    transform: translateX(-200%);
+    opacity: 0;
+}
+
+#slide-three:checked ~ .slider_a_wrapper .element_three {
+    transform: translateX(-50%);
+    opacity: 1;
+}
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.slider-buttons {
+    position: absolute;
+    bottom: 295px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 10px;
+
+    z-index: 20;
+}
+
+.slider-buttons label {
+    padding: 8px 16px;
+
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.slider-buttons label:hover {
+    color: var(--primary-orange);
+}
+
+
+/* ==========================================
+  mobile
+========================================== */
+
+@media (max-width: 768px) {
+
+    .slider_a {
+        height: 140px;
+    }
+
+    .slider_a_element {
+        width: 120px;
+        height: 120px;
+
+    
+    }
+
+    .slider_a_element img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .slider-buttons {
+        bottom: 220px;
+        gap: 5px;
+    }
+
+    .slider-buttons label {
+        padding: 5px 9px;
+        font-size: 11px;
+    }
+}
+
+
+/* ==========================================
+  small smartphones
+========================================== */
+
+@media (max-width: 480px) {
+
+    .slider_a {
+        height: 120px;
+    }
+
+    .slider_a_element {
+        width: 100px;
+        height: 100px;
+
+        bottom: 75px;
+    }
+
+    .slider_a_element img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .slider-buttons {
+        
+        gap: 4px;
+    }
+
+    .slider-buttons label {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+}
+
+
+/* ==========================================
+   320px
+========================================== */
+
+@media (max-width: 360px) {
+
+    .slider_a {
+        height: 105px;
+    }
+
+    .slider_a_element {
+        width: 85px;
+        height: 85px;
+
+        bottom: 70px;
+    }
+
+    .slider_a_element img {
+        width: 85px;
+        height: 85px;
+    }
+
+    .slider-buttons {
+        
+        gap: 3px;
+    }
+
+    .slider-buttons label {
+        padding: 3px 6px;
+        font-size: 9px;
+    }
+}
