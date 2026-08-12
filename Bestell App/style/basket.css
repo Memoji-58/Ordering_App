@@ -1,6 +1,6 @@
 .basket-dialog {
     position: fixed;
-    top: 140px;
+    top: 500px;
     right: max(0px, calc((100vw - 1440px) / 2));
     width: 360px;
     max-height: calc(100vh - 160px);

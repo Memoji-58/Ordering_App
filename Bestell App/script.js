@@ -1,98 +1,44 @@
 let currentIndex = 0;
 
+
+let basket = [];
+
+
 function renderAll() {
-    let burgerContainer = document.getElementById('burger-container');
-    let pizzaContainer = document.getElementById('pizza-container');
-    let saladContainer = document.getElementById('salad-container');
-
-    let htmlBurger = '';
-    let htmlPizza = '';
-    let htmlSalad = '';
-
-    for (let i = 0; i < dishes.length; i++) {
-
-        let amount = 0;
-
-        for (let j = 0; j < basket.length; j++) {
-            if (basket[j].name === dishes[i].name) {
-                amount = basket[j].amount;
-            }
-        }
-
-        if (dishes[i].category === "Burger") {
-            htmlBurger += `
-                <article class="dish-card">
-                    <img class="dish-img" src="./assets/img/burger_${i + 1}.png" alt="burger_${i + 1}">
-
-                    <div class="dish-content">
-                        <div class="dish-header">
-                            <h3 class="dish-title">${dishes[i].name}</h3>
-                            <span class="dish-price">${dishes[i].price} €</span>
-                        </div>
-
-                        <p class="dish-description">${dishes[i].ingredients}</p>
-
-                        <div class="dish-actions">
-                            <button class="add-to-basket-btn" onclick="addToBasket(${i})">${amount > 0 ? `Added (${amount})`:
-                                'Add to basket'}
-                            </button>
-                        </div>
-                    </div>
-                </article>
-            `;
-        }
-
-        else if (dishes[i].category === "Pizza") {
-            htmlPizza += `
-                <article class="dish-card">
-                    <img class="dish-img" src="./assets/img/pizza_${i + 1}.png" alt="pizza_${i + 1}">
-
-                    <div class="dish-content">
-                        <div class="dish-header">
-                            <h3 class="dish-title">${dishes[i].name}</h3>
-                            <span class="dish-price">${dishes[i].price} €</span>
-                        </div>
-
-                        <p class="dish-description">${dishes[i].ingredients}</p>
-
-                        <div class="dish-actions">
-                            <button class="add-to-basket-btn" onclick="addToBasket(${i})">${amount > 0 ? `Added (${amount})`:
-                                'Add to basket'}
-                            </button>
-                        </div>
-                    </div>
-                </article>
-            `;
-        }
-
-        else if (dishes[i].category === "Salad") {
-            htmlSalad += `
-                <article class="dish-card">
-                    <img class="dish-img" src="./assets/img/salad_${i + 1}.png" alt="salad_${i + 1}">
-
-                    <div class="dish-content">
-                        <div class="dish-header">
-                            <h3 class="dish-title">${dishes[i].name}</h3>
-                            <span class="dish-price">${dishes[i].price} €</span>
-                        </div>
-
-                        <p class="dish-description">${dishes[i].ingredients}</p>
-
-                        <div class="dish-actions">
-                            <button class="add-to-basket-btn" onclick="addToBasket(${i})">  ${amount > 0 ? `Added (${amount})`:
-                                'Add to basket'}
-                            </button>
-                        </div>
-                    </div>
-                </article>
-            `;
-        }
+    let containers ={ 
+        Burger: document.getElementById('burger-container'),
+    Pizza: document.getElementById('pizza-container'),
+    Salad: document.getElementById('salad-container'),
+    }
+   for (let container of Object.values(containers)) {
+        container.innerHTML = '';
     }
 
-    burgerContainer.innerHTML = htmlBurger;
-    pizzaContainer.innerHTML = htmlPizza;
-    saladContainer.innerHTML = htmlSalad;
+    for (let i = 0; i < dishes.length; i++) {
+        let dish = dishes[i];
+        let basketItem = basket.find(item => item.name === dish.name);
+        let amount = basketItem ? basketItem.amount : 0;
+        let category = dish.category.toLowerCase();
+
+        containers[dish.category].innerHTML += `
+            <article class="dish-card">
+                <img class="dish-img" src="./assets/img/${category}_${i + 1}.png">
+                <div class="dish-content">
+                    <div class="dish-header">
+                        <h3 class="dish-title">${dish.name}</h3>
+                        <span class="dish-price">${dish.price} €</span>
+                    </div>
+                    <p class="dish-description">${dish.ingredients.join(', ')}</p>
+                    <div class="dish-actions">
+                        <button class="add-to-basket-btn" onclick="addToBasket(${i})">
+                            ${amount > 0 ? `Added (${amount})` : 'Add to basket'}
+                        </button>
+                    </div>
+                </div>
+            </article>`;
+    }
 }
+
 
 
 function toggleNavMenu() {
@@ -107,9 +53,6 @@ function toggleBasket() {
 
     basketElement.classList.toggle('d-none');
 }
-
-
-let basket = [];
 
 
 function addToBasket(i) {
@@ -141,22 +84,20 @@ function removeFromBasket(i) {
     renderAll();
 }
 
-function increaseAmount(i) {
-    basket[i].amount++;
-    renderBasket();
-    renderAll();
-}
 
-
-function decreaseAmount(i) {
-    if (basket[i].amount > 1) {
+function changeAmount(i, increase) {
+    if (increase) {
+        basket[i].amount++;
+    } else if (basket[i].amount > 1) {
         basket[i].amount--;
     } else {
         basket.splice(i, 1);
     }
+
     renderBasket();
     renderAll();
 }
+
 
 function openBasket() {
     let basketElement = document.getElementById('basket');
@@ -167,62 +108,31 @@ function openBasket() {
 
 function renderBasket() {
     let basketItems = document.getElementById('basket-items');
-    let subtotalElement = document.getElementById('subtotal');
-    let totalPriceElement = document.getElementById('total-price');
-    let btnTotalElement = document.getElementById('btn-total');
-
+    let subtotal = 0;
     basketItems.innerHTML = '';
 
-    let subtotal = 0;
-
     for (let i = 0; i < basket.length; i++) {
-        let item = basket[i];
-
-        let itemTotal = item.price * item.amount;
-
+        let item = basket[i], itemTotal = item.price * item.amount;
         subtotal += itemTotal;
-
         basketItems.innerHTML += `
             <div class="basket-item-card">
-
-                <div class="basket-item-title">
-                    ${item.name}
-                </div>
-
+                <div class="basket-item-title">${item.name}</div>
                 <div class="basket-item-controls">
-
-                 <div class="amount-picker">
-                        <button class="amount-btn" onclick="decreaseAmount(${i})">-</button>
+                    <div class="amount-picker">
+                        <button class="amount-btn" onclick="changeAmount(${i}, false)">-</button>
                         <span>${item.amount}x</span>
-                        <button class="amount-btn" onclick="increaseAmount(${i})">+</button>
+                        <button class="amount-btn" onclick="changeAmount(${i}, true)">+</button>
                     </div>
-
-                    <span>
-                        ${item.amount} × ${item.price.toFixed(2)} €
-                    </span>
-
-                    <span>
-                        ${itemTotal.toFixed(2)} €
-                    </span>
-
+                    <span>${item.amount} × ${item.price.toFixed(2)} €</span>
+                    <span>${itemTotal.toFixed(2)} €</span>
                 </div>
-
-                <button
-                    class="remove-from-basket-btn"
-                    onclick="removeFromBasket(${i})">
-                    <img class="icon-default" src="./assets/icons/delete.svg">
-                </button>
-
-            </div>
-        `;
+                <button class="remove-from-basket-btn" onclick="changeAmount(${i}, false)"><img class="icon-default" src="./assets/icons/delete.svg"></button>
+            </div>`;
     }
-
-    let deliveryFee = 4.99;
-    let total = subtotal > 0 ? subtotal + deliveryFee : 0;
-
-    subtotalElement.innerText = `${subtotal.toFixed(2)} €`;
-    totalPriceElement.innerText = `${total.toFixed(2)} €`;
-    btnTotalElement.innerText = `${total.toFixed(2)} €`;
+    let total = subtotal > 0 ? subtotal + 4.99 : 0;
+    document.getElementById('subtotal').innerText = `${subtotal.toFixed(2)} €`;
+    document.getElementById('total-price').innerText = `${total.toFixed(2)} €`;
+    document.getElementById('btn-total').innerText = `${total.toFixed(2)} €`;
 }
 
 
